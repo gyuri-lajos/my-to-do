@@ -2,21 +2,99 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Main</title>
-
+    <title>
+        Main
+    </title>
     <link rel="stylesheet" href="main.css">
-
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "actionEventListener": {
+            "prototype": "montage/core/event/action-event-listener",
+            "properties": {
+                "action": "addContent",
+                "handler": {"@": "rangeController"}
+            },
+            "_dev": {
+                "isHidden": true
+            }
+        },
+        "button": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "button"},
+                "active": false,
+                "contenteditable": "false",
+                "dir": "ltr",
+                "draggable": "false",
+                "enabled": true,
+                "label": "New Task"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": true,
+                    "listener": {"@": "actionEventListener"}
                 }
+            ]
+        },
+        "list": {
+            "prototype": "digit/ui/list.reel",
+            "properties": {
+                "element": {"#": "list"},
+                "content": [],
+                "contentController": {"@": "rangeController"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true",
+                "isSelectionEnabled": false
+            }
+        },
+        "rangeController": {
+            "prototype": "montage/core/range-controller",
+            "properties": {
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true"
+            }
+        },
+        "task1": {
+            "prototype": "ui/task.reel",
+            "properties": {
+                "element": {"#": "task1"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true",
+                "title": "item"
+            },
+            "bindings": {
+                "task": {"<-": "@list:iteration.object"}
+            }
+        },
+        "title": {
+            "prototype": "digit/ui/title.reel",
+            "properties": {
+                "element": {"#": "title"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true",
+                "value": "To Do"
             }
         }
+    }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main"></div>
+    <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <h1 data-montage-id="title"></h1>
+        <button data-montage-id="button"></button>
+        <ul data-montage-id="list">
+            <li data-montage-id="task1"></li>
+        </ul>
+    </div>
 </body>
 </html>
