@@ -7,10 +7,16 @@
     </title>
     <link rel="stylesheet" href="main.css">
     <script type="text/montage-serialization">
-    {
+     {
         "owner": {
             "properties": {
-                "element": {"#": "main"}
+                "element": {"#": "main"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true",
+                "formenctype": "application/x-www-form-urlencoded",
+                "formmethod": "get",
+                "type": "button"
             }
         },
         "actionEventListener": {
@@ -23,21 +29,23 @@
                 "isHidden": true
             }
         },
+    
         "button": {
-            "prototype": "digit/ui/button.reel",
+            "prototype": "montage/ui/button.reel",
             "properties": {
                 "element": {"#": "button"},
-                "active": false,
-                "contenteditable": "false",
+                "contenteditable": "true",
                 "dir": "ltr",
-                "draggable": "false",
+                "draggable": "true",
                 "enabled": true,
-                "label": "New Task"
+                "formenctype": "application/x-www-form-urlencoded",
+                "formmethod": "get",
+                "label": "New Task",
+                "type": "button"
             },
             "listeners": [
                 {
                     "type": "action",
-                    "useCapture": true,
                     "listener": {"@": "actionEventListener"}
                 }
             ]
@@ -46,20 +54,16 @@
             "prototype": "digit/ui/list.reel",
             "properties": {
                 "element": {"#": "list"},
-                "content": [],
                 "contentController": {"@": "rangeController"},
                 "contenteditable": "true",
                 "dir": "ltr",
-                "draggable": "true",
-                "isSelectionEnabled": false
+                "draggable": "true"
             }
         },
         "rangeController": {
             "prototype": "montage/core/range-controller",
             "properties": {
-                "contenteditable": "true",
-                "dir": "ltr",
-                "draggable": "true"
+                "content": []
             }
         },
         "task1": {
@@ -68,8 +72,7 @@
                 "element": {"#": "task1"},
                 "contenteditable": "true",
                 "dir": "ltr",
-                "draggable": "true",
-                "title": "item"
+                "draggable": "true"
             },
             "bindings": {
                 "task": {"<-": "@list:iteration.object"}
@@ -82,7 +85,7 @@
                 "contenteditable": "true",
                 "dir": "ltr",
                 "draggable": "true",
-                "value": "To Do"
+                "value": "Things To Do"
             }
         }
     }
