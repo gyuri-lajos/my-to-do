@@ -1,0 +1,1 @@
+montageDefine("6a64ecc","inherits",{dependencies:["util","./inherits_browser.js"],factory:function(e,t,n){try{var i=e("util");if("function"!=typeof i.inherits)throw"";n.exports=i.inherits}catch(r){n.exports=e("./inherits_browser.js")}}});
